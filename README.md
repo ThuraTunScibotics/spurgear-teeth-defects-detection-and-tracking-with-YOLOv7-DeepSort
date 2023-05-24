@@ -2,7 +2,7 @@
 
 |     Detection       |      Detection + Tracking (Counting)       | 
 |        :---:          |               :---:          | 
-|          -            |    	<img src="https://github.com/ThuraTunScibotics/spurgear-teeth-defects-detection-and-tracking-with-YOLOv7-DeepSort/blob/main/assets/detect_track_count_2.gif" height="50%" width="50%">		 | 
+|          -            |    	<img src="https://github.com/ThuraTunScibotics/spurgear-teeth-defects-detection-and-tracking-with-YOLOv7-DeepSort/blob/main/assets/detect_track_count_2.gif" height="50%" width="50%">	     | 
 |			|				|
 |           -            |    <img src="https://github.com/ThuraTunScibotics/spurgear-teeth-defects-detection-and-tracking-with-YOLOv7-DeepSort/blob/main/assets/detect_track_count_1.gif" height="50%" width="50%">       | 
 
