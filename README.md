@@ -64,10 +64,10 @@ python labelImg.py [/path/to/images-datasets] [/path/to/classes.txt]
 python split_dataset.py --folder [annotated-dataset-folder-name] --train [80] --validation [10] --test [10] --dest [/desinated-path-name-dataset]
 ```
 #### Step-3: Making configuration file
-* The parameters in [gear_detect.yaml](https://github.com/ThuraTunScibotics/spurgear-teeth-defects-detection-and-tracking-YOLOv7-DeepSort/blob/main/data/gear_detect.yaml) are needed to change.
-	* add the training, validation and testing data path to 'train`, `val`, and `test` respectively 
+* The parameters in [gear_detect.yaml](https://github.com/ThuraTunScibotics/spurgear-teeth-defects-detection-and-tracking-with-YOLOv7-DeepSort/blob/main/data/gear_detect.yaml) are needed to change.
+	* add the training, validation and testing data path to `train`, `val`, and `test` respectively 
 	* add the numbers of class to class to `nc`, and class names to `names` parameters
-* The configuration parameter `nc` number of class in [yolov7-gear-detect.yaml](https://github.com/ThuraTunScibotics/spurgear-teeth-defects-detection-and-tracking-YOLOv7-DeepSort/blob/main/cfg/training/yolov7-gear-detect.yaml) is also needed to changed, and we chage to `2` for this case.	
+* The configuration parameter `nc` number of class in [yolov7-gear-detect.yaml](https://github.com/ThuraTunScibotics/spurgear-teeth-defects-detection-and-tracking-with-YOLOv7-DeepSort/blob/main/cfg/training/yolov7-gear-detect.yaml) is also needed to changed, and we chage to `2` for this case.
 ----------------------------------------------------
 
 ### Installation
