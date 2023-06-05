@@ -119,10 +119,10 @@ python detect.py --weights runs/train/yolov7-defect-detect-three2/weights/last.p
 ```
 
 #### Run for detection + tracking -> Counting
-To run counting the inspecting result of gear product through `detection` and `tracking`, we need to run the implemented `detect_count.py` python script, and the argument are the same as detection. 
+To run counting the inspecting result of gear product through `detection` and `tracking`, we need to run the implemented `detect_track_count.py` python script, and the argument are the same as detection. 
    
 ```
-python detect_count.py --weights runs/train/yolov7-defect-detect-three2/weights/last.pt --source inference/videos/video_4.mp4 --view-img
+python detect_track_count.py --weights runs/train/yolov7-defect-detect-three2/weights/last.pt --source inference/videos/video_4.mp4 --view-img
 ```
 
 #### Run for saving inspected data as `CSV` file
