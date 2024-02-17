@@ -32,7 +32,7 @@ This implementation is the inspection of spur gear teeth defects using state-of-
 * **GPU** : NVIDIA GeForce 920Mx, 2GB
 * **GPU Drvier & CUDA Version** : 515.105.01 | 11.7
 
-|     Inferencing       |      time per frame       | 
+|     Inferencing       |      FPS on above System Spec       | 
 |        :---:          |     :---:      | 
 | YOLOv7 (Detection)                |       388.6ms        | 
 | YOLOv7 + Deepsort (Detection+Tracking)    |       350.3ms        | 
