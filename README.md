@@ -1,4 +1,5 @@
-# spurgear-teeth-defects-detection-and-counting-YOLOv7
+# Inspection and Counting of Spur Gear Teeth Defect using YOLOv7 and DeepSort
+This implementation is the inspection of spur gear teeth defects using state-of-the-art YOLOv7 Object Detection and DeepSort Object Tracking Algorithm. The model was trained on custom collected dataset which are images of 3D printed gears. The detection of 
 
 ### Overview
 ![overview process](https://github.com/ThuraTunScibotics/spurgear-teeth-defects-detection-and-tracking-with-YOLOv7-DeepSort/blob/main/assets/process_design.png)
