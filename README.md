@@ -39,7 +39,7 @@ This implementation is the inspection of spur gear teeth defects using state-of-
 
 -----------------------------------------------------------
 ### Dataset Preparation
-The dataset that is being trained on is custom dataset and you can get here-> (link soon)
+The dataset that is being trained on is custom dataset. You can get gear images here-> (link soon), annotate with labelImg as the steps below.
 
 #### Step-1: Data Annotation
 
