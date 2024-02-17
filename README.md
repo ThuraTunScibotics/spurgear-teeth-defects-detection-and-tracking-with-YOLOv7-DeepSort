@@ -34,8 +34,8 @@ This implementation is the inspection of spur gear teeth defects using state-of-
 
 |     Inferencing       |      time per frame       | 
 |        :---:          |     :---:      | 
-| YOLOv7 (Detection)                |       -        | 
-| YOLOv7 + Deepsort (Detection+Tracking)    |       -        | 
+| YOLOv7 (Detection)                |       388.6ms        | 
+| YOLOv7 + Deepsort (Detection+Tracking)    |       350.3ms        | 
 
 -----------------------------------------------------------
 ### Dataset Preparation
