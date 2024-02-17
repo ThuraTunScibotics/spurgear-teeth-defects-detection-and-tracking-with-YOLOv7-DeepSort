@@ -132,9 +132,9 @@ python detect_track_count.py --weights runs/train/yolov7-defect-detect-three2/we
 ```
 
 #### Run for saving inspected data as `CSV` file
-For saving the data of inspecting result as CSV file, `--save-csv` is needed to added to the command. This saved file is going to save in `./runs/csv/` path, and this csv file is used to visulize the qulity control plot and charts as following figure.
+For saving the data of inspecting result as CSV file, `--save-csv` is needed to pasre in the command. This saved file is going to save in `./runs/csv/` path, and this csv file is used to visulize the qulity control plot and charts as following figure.
 ```
-python detect_count.py --weights runs/train/yolov7-defect-detect-three2/weights/last.pt --source inference/videos/video_4.mp4 --view-img --save-csv
+python detect_track_count.py --weights runs/train/yolov7-defect-detect-three2/weights/last.pt --source inference/videos/video_4.mp4 --view-img --save-csv
 ```
 
 ### Model Training
