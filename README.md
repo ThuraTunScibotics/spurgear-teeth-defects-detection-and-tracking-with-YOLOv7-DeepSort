@@ -1,10 +1,10 @@
 # spurgear-teeth-defects-detection-and-counting-YOLOv7
 
-|     Detection       |      Detection + Tracking (Counting)       | 
-|        :---:          |               :---:          | 
-|          -            |    	<img src="https://github.com/ThuraTunScibotics/spurgear-teeth-defects-detection-and-tracking-with-YOLOv7-DeepSort/blob/main/assets/detect_track_count_2.gif" height="50%" width="50%">	     | 
+|    Detection + Tracking (Counting)       | 
+|            :---:          | 
+|    	<img src="https://github.com/ThuraTunScibotics/spurgear-teeth-defects-detection-and-tracking-with-YOLOv7-DeepSort/blob/main/assets/detect_track_count_2.gif" height="50%" width="50%">	     | 
 |			|				|
-|           -            |    <img src="https://github.com/ThuraTunScibotics/spurgear-teeth-defects-detection-and-tracking-with-YOLOv7-DeepSort/blob/main/assets/detect_track_count_1.gif" height="50%" width="50%">       | 
+|      <img src="https://github.com/ThuraTunScibotics/spurgear-teeth-defects-detection-and-tracking-with-YOLOv7-DeepSort/blob/main/assets/detect_track_count_1.gif" height="50%" width="50%">       | 
 
 
 ### Overview
@@ -14,7 +14,12 @@
 ### Contents
 
 * [Inference Speed of _Detection_ and _Detection plus Tracking_](#inference-speed-of-detection-and-detection-plus-tracking)  
-* [Dataset Preparation](#dataset-preparation)  
+* [Dataset Preparation](#dataset-preparation)
+* [Installation](#installation)
+* [Run Demo](#run-demo)
+* [Model Trainin](#model-training)
+* [Model Evaluation](#model-evaluation)
+* [References](#references)
 
 -------------------------------------------------------------
 ### Inference Speed of _Detection_ and _Detection plus Tracking_
@@ -133,7 +138,7 @@ python detect_count.py --weights runs/train/yolov7-defect-detect-three2/weights/
 
 ### Model Training
 
-To train the model on your machine, make sure YOLOv7 model haved already downloaded in the project root directory.
+To train the model on your machine, make sure YOLOv7 weight file haved already downloaded.
 ```
 python train.py --workers 0 --batch-size 1 --device 0 --data data/gear_detect.yaml --img 640 640 --cfg cfg/training/yolov7-gear-detect.yaml --weights yolov7.pt --name yolov7-defect-detect-three --hyp data/hyp.scratch.custom.yaml --epochs 200
 ```
@@ -142,7 +147,10 @@ python train.py --workers 0 --batch-size 1 --device 0 --data data/gear_detect.ya
 ------------------------------------------------------------
 
 ### Model Evaluation
-
+To evaluate the run model on Tensorboard, run the following;
+```
+tensorboard --logdir runs/train
+```
 
 -------------------------------------------------------
 
