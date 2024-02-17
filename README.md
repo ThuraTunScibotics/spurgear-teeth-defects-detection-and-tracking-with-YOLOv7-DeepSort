@@ -1,7 +1,7 @@
+# spurgear-teeth-defects-detection-and-counting-YOLOv7
+
 ### Overview
 ![overview process](https://github.com/ThuraTunScibotics/spurgear-teeth-defects-detection-and-tracking-with-YOLOv7-DeepSort/blob/main/assets/process_design.png)
-
-# spurgear-teeth-defects-detection-and-counting-YOLOv7
 
 |    Detection + Tracking (Counting)       | 
 |            :---:          | 
