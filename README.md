@@ -8,7 +8,7 @@
 
 
 ### Overview
-
+![overview image](https://github.com/ThuraTunScibotics/spurgear-teeth-defects-detection-and-tracking-with-YOLOv7-DeepSort/tree/main/assets)
 
 -------------------------------------------------------------
 ### Contents
@@ -17,7 +17,7 @@
 * [Dataset Preparation](#dataset-preparation)
 * [Installation](#installation)
 * [Run Demo](#run-demo)
-* [Model Trainin](#model-training)
+* [Model Training](#model-training)
 * [Model Evaluation](#model-evaluation)
 * [References](#references)
 
