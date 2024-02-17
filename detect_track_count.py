@@ -23,8 +23,8 @@ import skimage
 from sort import *
 from collections import deque
 
-# for counting
-#vehicles total counting variables
+# Data structure as Global Variable #
+# id lists to store tracked id of each detected label
 array_ids_good = []
 array_ids_defect = []
 array_ids_total = []
@@ -44,8 +44,10 @@ modulo_counting_t, modulo_counting_d, modulo_counting_g = 0, 0, 0
 
 
 #....... For Counter which will count the gear .......#
-def draw_box_count(img, bbox, identities=None, categories=None, names=None, conf_score=None, offset=(0, 0)):
-    
+def storing_tracked_id(img, bbox, identities=None, categories=None, names=None, conf_score=None, offset=(0, 0)):
+    """
+    This function store tracked id of detected label into respective id lists when mid point of detected bounding box is within ROI (between entry and exit coordinate)
+    """
     for i, box in enumerate(bbox):
         print(i)
         print(box)
@@ -67,16 +69,19 @@ def draw_box_count(img, bbox, identities=None, categories=None, names=None, conf
         plot_one_box(xyxy, img, label=label, color=colors[cat], line_thickness=5)
         
 
-        #c1, c2 = (int(xyxy[0]), int(xyxy[1])), (int(xyxy[2]), int(xyxy[3]))
+        # c1, c2 = (int(xyxy[0]), int(xyxy[1])), (int(xyxy[2]), int(xyxy[3]))
+        # Midpoint Of Bbox
         midpoint_x = x1+((x2-x1)/2)
         midpoint_y = y1+((y2-y1)/2)
         center_point = (int(midpoint_x),int(midpoint_y))
         midpoint_color = (255,0,0)
 
-        # coordinate for line (boundary)
+        # Entry Coordinate (68% of widt, 5)
         coordinateA = (int(img.shape[1] * 0.68), 5)
         # coordinateB = (int(im0.shape[1] * 0.85), int(img.shape[0]-5))
         # coordinateC = (int(im0.shape[1] * 0.95), 5)
+
+        # Exit Coordinate (95% of width, height-5)
         coordinateD = (int(img.shape[1] * 0.95), int(img.shape[0]-5))
 
         if (midpoint_x > coordinateA[0] and midpoint_x < coordinateD[0]) and (midpoint_y > coordinateA[1] and midpoint_y < coordinateD[1]):
@@ -84,7 +89,7 @@ def draw_box_count(img, bbox, identities=None, categories=None, names=None, conf
             midpoint_color = (0,0,255)
             print('Kategori : '+str(cat))
             
-            #add total counting
+            # add total counting
             if len(array_ids_total) > 0:
                 if id not in array_ids_total:
                     array_ids_total.append(id)
@@ -92,7 +97,7 @@ def draw_box_count(img, bbox, identities=None, categories=None, names=None, conf
                 array_ids_total.append(id)
 
             if label_name == 'Good Teeth':
-                #add good_teeth counting
+                # add good_teeth counting
                 if len(array_ids_good) > 0:
                     if id not in array_ids_good:
                         array_ids_good.append(id)
@@ -100,7 +105,7 @@ def draw_box_count(img, bbox, identities=None, categories=None, names=None, conf
                     array_ids_good.append(id)
 
             if label_name == 'Defect Teeth':
-                #add defect_teeth counting
+                # add defect_teeth counting
                 if len(array_ids_defect) > 0:
                     if id not in array_ids_defect:
                         array_ids_defect.append(id)
@@ -214,6 +219,7 @@ def detect(save_img=False):
             save_path = str(save_dir / p.name)  # img.jpg
             txt_path = str(save_dir / 'labels' / p.stem) + ('' if dataset.mode == 'image' else f'_{frame}')  # img.txt
             gn = torch.tensor(im0.shape)[[1, 0, 1, 0]]  # normalization gain whwh
+
             if len(det):
                 # Rescale boxes from img_size to im0 size
                 det[:, :4] = scale_coords(img.shape[2:], det[:, :4], im0.shape).round()
@@ -258,20 +264,20 @@ def detect(save_img=False):
                     categories = tracked_dets[:, 4]
                     conf_score = f'{conf:.2f}'
                     # draw box and count
-                    draw_box_count(im0, bbox_xyxy, identities, categories, names, conf_score)
+                    storing_tracked_id(im0, bbox_xyxy, identities, categories, names, conf_score)
                     print('Bbox xy count : '+str(len(bbox_xyxy)))
 
-            ### .... Start Counting .... ###
-
-            # Draw the line for counting while the bbox midpoint pass through
-            
+            # Drawing Entry Line
             coordinateA = (int(im0.shape[1] * 0.68), 5)
             coordinateB = (int(im0.shape[1] * 0.68), int(im0.shape[0])-5)
             #coordinateB = (int(im0.shape[1] * 0.85), 200)
+            # Drawint Exit Line
             coordinateC = (int(im0.shape[1] * 0.95), 5)
             coordinateD = (int(im0.shape[1] * 0.95), int(im0.shape[0])-5)
             cv2.line(im0, coordinateA, coordinateB, (0, 128, 255), 6)
             cv2.line(im0, coordinateC, coordinateD, (0, 128, 255), 6)
+
+            ### .... Get Counts by measuring the length of each track ID data structure (lists) .... ###
 
             # For counting TOTAL
             if (count_total == 0):
@@ -281,8 +287,10 @@ def detect(save_img=False):
                     total_counting = len(array_ids_total)
                 else:
                     total_counting = modulo_counting_t + len(array_ids_total)
-                    if(len(array_ids_total)%100 == 0):
-                        modulo_counting_t = modulo_counting_t + 100
+
+                    # if the array_ids_total's length is 100, clear the array
+                    if (len(array_ids_total)%100 == 0):
+                        modulo_counting_t = modulo_counting_t + 100  # update modulo_counting_t with 100, becuase list length is 100
                         array_ids_total.clear()
 
             # For counting DEFECTS
@@ -293,7 +301,7 @@ def detect(save_img=False):
                     defect_counting = len(array_ids_defect)
                 else:
                     defect_counting = modulo_counting_d + len(array_ids_defect)
-                    if(len(array_ids_defect)%100 == 0):
+                    if (len(array_ids_defect)%100 == 0):
                         modulo_counting_d = modulo_counting_d + 100
                         array_ids_defect.clear()
 
@@ -305,7 +313,7 @@ def detect(save_img=False):
                     good_counting = len(array_ids_good)
                 else:
                     good_counting = modulo_counting_g + len(array_ids_good)
-                    if(len(array_ids_good)%100 == 0):
+                    if (len(array_ids_good)%100 == 0):
                         modulo_counting_g = modulo_counting_g + 100
                         array_ids_good.clear()
             
